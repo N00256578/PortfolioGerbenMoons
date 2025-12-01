@@ -1,0 +1,22 @@
+[
+    {
+        "slug": "todo-list",
+        "title": "Todo List App",
+        "description": "A simple todo application to manage daily tasks",
+        "screenshots": [
+            {
+                "url": "https://picsum.photos/seed/todoapp/600/400",
+                "caption": "Screenshot of ToDo App"
+            }
+        ],
+        "url": "https://example.com",
+        "github": "",
+        "date": "2025",
+        "tags": [
+            "React",
+            "HTML",
+            "JavaScript",
+            "CSS"
+        ]
+    }
+]
