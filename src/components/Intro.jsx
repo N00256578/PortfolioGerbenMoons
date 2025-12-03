@@ -1,52 +1,30 @@
 import TextType from "@/components/animations/TextType";
 import DecryptedText from "./animations/DecryptedText";
 
+import ProfileCard from "./animations/ProfileCard/ProfileCard";
+
 export default function Intro() {
   return (
     <header id="intro" className="min-h-screen flex items-center">
       <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
         <div className="lg:col-span-3 space-y-6 sm:space-y-8">
-          <div className="space-y-3 sm:space-y-2">
-            <div className="text-sm text-muted-foreground tracking-wider">
-              PORTFOLIO / 2025
-            </div>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
-              {/* <TextType
-                text={["Gerben\n"]}
-                hideCursorWhileTyping={true}
-                typingSpeed={75}
-                pauseDuration={3000}
-                showCursor={true}
-                cursorCharacter="Moons"
-                cursorBlinkDuration={10000000}
-                cursorClassName="text-muted-foreground"
-                loop={false}
-              /> */}
-              <DecryptedText
-                text={"Gerben\nMoons"}
-                animateOn="view"
-                revealDirection="center"
-                maxIterations={30}
-              />
-            </h1>
-          </div>
-
-          <div className="space-y-6 max-w-md">
-            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-              Frontend Developer crafting digital experiences at the
-              intersection of
-              <span className="text-foreground"> design</span>,
-              <span className="text-foreground"> technology</span>, and
-              <span className="text-foreground"> user experience</span>.
-            </p>
-
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                Available for work
-              </div>
-            </div>
-          </div>
+          <ProfileCard
+            name="Gerben Moons"
+            title="Software Engineer"
+            handle="gerbenmoons"
+            status="Student"
+            contactText="Contact Me"
+            avatarUrl="/GerbenMoons.png"
+            miniAvatarUrl="/miniGerbenMoonsMini.png"
+            showUserInfo={true}
+            enableTilt={true}
+            enableMobileTilt={true}
+            onContactClick={() =>
+              document
+                .getElementById("contact")
+                .scrollIntoView({ behavior: "smooth" })
+            }
+          />
         </div>
 
         <div className="lg:col-span-2 flex flex-col justify-end space-y-6 sm:space-y-8 mt-8 lg:mt-0">
@@ -55,8 +33,9 @@ export default function Intro() {
               CURRENTLY
             </div>
             <div className="space-y-2">
-              <div className="text-foreground">Lecturer</div>
-              <div className="text-muted-foreground">@ IADT</div>
+              <div className="text-foreground">Student</div>
+              <div className="text-muted-foreground">@ HoGent</div>
+              <div className="text-muted-foreground">Erasmus @ IADT</div>
               <div className="text-xs text-muted-foreground">
                 2025 — Present
               </div>

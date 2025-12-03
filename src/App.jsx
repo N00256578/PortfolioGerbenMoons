@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("");
-  const [scrollDirection, setScrollDirection] = useState("down");
 
   const [isDark, setIsDark] = useState(
     localStorage.getItem("isDark") === "true"
@@ -19,60 +18,29 @@ export default function App() {
     document.documentElement.classList.toggle("dark", isDark);
     localStorage.setItem("isDark", isDark);
   }, [isDark]);
-
   useEffect(() => {
     const sections = ["intro", "projects", "contact"];
     const targets = sections.map((section) => document.getElementById(section));
 
-    let lastScrollY = window.scrollY;
-
-    const handleScroll = () => {
-      const currentYScroll = window.scrollY;
-      if (lastScrollY > currentYScroll) {
-        setScrollDirection("up");
-      } else {
-        setScrollDirection("down");
-      }
-      lastScrollY = currentYScroll;
-    };
-
-    window.addEventListener("scroll", handleScroll);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const animation =
-              scrollDirection === "up"
-                ? "animate-fade-in-down"
-                : "animate-fade-in-up";
-            entry.target.classList.remove(
-              "animate-fade-in-up",
-              "animate-fade-in-down"
-            );
-            entry.target.classList.add(animation);
             setActiveSection(entry.target.id);
-          } else {
-            entry.target.classList.remove(
-              "animate-fade-in-up",
-              "animate-fade-in-down"
-            );
           }
         });
       },
       {
         threshold: 0.3,
-        rootMargin: "0px 0px 0px 0px",
-        scrollMargin: "0px",
       }
     );
 
     targets.forEach((section) => observer.observe(section));
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       observer.disconnect();
     };
-  }, [scrollDirection]);
+  }, []);
 
   const toggleTheme = () => {
     setIsDark((currentValue) => !currentValue);
