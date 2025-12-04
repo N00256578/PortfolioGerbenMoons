@@ -33,11 +33,27 @@ export default function Intro() {
               CURRENTLY
             </div>
             <div className="space-y-2">
-              <div className="text-foreground">Student</div>
-              <div className="text-muted-foreground">@ HoGent</div>
-              <div className="text-muted-foreground">Erasmus @ IADT</div>
+              <div className="text-foreground">
+                Student{" "}
+                <a href="http://hogent.be" target="_blank" className="text-muted-foreground">
+                  @ HoGent
+                </a>
               <div className="text-xs text-muted-foreground">
-                2025 — Present
+                2022 — 2026
+              </div>
+              </div>
+              <div className="text-foreground">
+                Erasmus{" "}
+                <a
+                  href="http://iadt.ie"
+                  target="_blank"
+                  className="text-muted-foreground"
+                >
+                  @ IADT
+                </a>
+              <div className="text-xs text-muted-foreground">
+                September — December 2025
+              </div>
               </div>
             </div>
           </div>

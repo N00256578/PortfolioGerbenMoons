@@ -8,7 +8,7 @@ const StarBorder = ({
 }) => {
   return (
     <Component
-      className={`relative block overflow-hidden rounded-[20px] w-full p-[2px] ${className}`}
+      className={`relative block overflow-hidden rounded-[20px] w-full p-[2px] transition-transform duration-300 hover:scale-105 ${className}`}
       style={{
         background: "transparent",
       }}
