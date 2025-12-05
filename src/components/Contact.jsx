@@ -2,7 +2,11 @@ import StarBorder from "./animations/StarBorder";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
-export default function Contact() {
+export default function Contact({ isDark }) {
+  // Define colors based on theme
+  const getIconColor = (lightColor, darkColor) =>
+    isDark ? darkColor : lightColor;
+
   return (
     <section id="contact" className="py-20 sm:py-32">
       <h2 className="text-3xl sm:text-4xl font-light mb-8">Contact Me</h2>
@@ -13,34 +17,45 @@ export default function Contact() {
               name: "GitHub",
               handle: "@GMstudentHoGent",
               url: "https://github.com/GMstudentHoGent",
-              icon: <FaGithub />,
+              icon: <FaGithub color={getIconColor("#181717", "#ffffff")} />,
+              color: getIconColor("#181717", "#ffffff"),
+            },
+            {
+              name: "GitHub",
+              handle: "@N00256578",
+              url: "https://github.com/N00256578",
+              icon: <FaGithub color={getIconColor("#181717", "#ffffff")} />,
+              color: getIconColor("#181717", "#ffffff"),
             },
             {
               name: "IADT",
               handle: "n00256578@student.iadt.ie",
               url: `mailto:n00256578@student.iadt.ie`,
-              icon: <MdEmail />,
+              icon: <MdEmail color="#FF5006" />,
+              color: "#FF5006",
             },
             {
               name: "HoGent",
               handle: "gerben.moons@student.hogent.be",
               url: "mailto:gerben.moons@student.hogent.be",
-              icon: <MdEmail />,
+              icon: <MdEmail color={getIconColor("#181717", "#ffffff")} />,
+              color: getIconColor("#181717", "#ffffff"),
             },
             {
               name: "LinkedIn",
               handle: "Gerben Moons",
               url: "https://linkedin.com/in/gerben-moons",
-              icon: <FaLinkedin />,
+              icon: <FaLinkedin color="#0a66c2" />,
+              color: "#0a66c2",
             },
           ].map((social) => (
             <StarBorder
-              key={social.name}
+              key={social.url}
               as="a"
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              color="cyan"
+              color={social.color}
               speed="3s"
               className="cursor-pointer"
             >

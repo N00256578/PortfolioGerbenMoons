@@ -7,25 +7,7 @@ export default function Intro() {
   return (
     <header id="intro" className="min-h-screen flex items-center">
       <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
-        <div className="lg:col-span-3 space-y-6 sm:space-y-8">
-          <ProfileCard
-            name="Gerben Moons"
-            title="Software Engineer"
-            handle="gerbenmoons"
-            status="Student"
-            contactText="Contact Me"
-            avatarUrl="/GerbenMoons.png"
-            miniAvatarUrl="/miniGerbenMoonsMini.png"
-            showUserInfo={true}
-            enableTilt={true}
-            enableMobileTilt={true}
-            onContactClick={() =>
-              document
-                .getElementById("contact")
-                .scrollIntoView({ behavior: "smooth" })
-            }
-          />
-        </div>
+
 
         <div className="lg:col-span-2 flex flex-col justify-end space-y-6 sm:space-y-8 mt-8 lg:mt-0">
           <div className="space-y-4">
@@ -73,6 +55,26 @@ export default function Intro() {
               )}
             </div>
           </div>
+        </div>
+
+        <div className="lg:col-span-3 space-y-6 sm:space-y-8">
+          <ProfileCard
+            name="Gerben Moons"
+            title="Software / Web Developer"
+            handle="gerbenmoons"
+            status="Student"
+            contactText="Contact Me"
+            avatarUrl="/GerbenMoons.png"
+            miniAvatarUrl="/miniGerbenMoonsMini.png"
+            showUserInfo={true}
+            enableTilt={true}
+            enableMobileTilt={true}
+            onContactClick={() =>
+              document
+                .getElementById("contact")
+                .scrollIntoView({ behavior: "smooth" })
+            }
+          />
         </div>
       </div>
     </header>

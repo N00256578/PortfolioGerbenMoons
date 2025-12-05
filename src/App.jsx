@@ -4,12 +4,16 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
+import GradualBlur from "./components/animations/GradualBlur";
+import Experiences from "./components/Experiences";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("");
 
   const [isDark, setIsDark] = useState(
-    localStorage.getItem("isDark") === "true"
+    localStorage.getItem("isDark")
+      ? localStorage.getItem("isDark") === "true"
+      : "true"
   );
 
   useEffect(() => {
@@ -18,6 +22,7 @@ export default function App() {
     document.documentElement.classList.toggle("dark", isDark);
     localStorage.setItem("isDark", isDark);
   }, [isDark]);
+
   useEffect(() => {
     const sections = ["intro", "projects", "contact"];
     const targets = sections.map((section) => document.getElementById(section));
@@ -48,14 +53,24 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground relative">
-      <NavBar activeSection={activeSection} />
+      <NavBar activeSection={activeSection} />{" "}
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <Intro />
         <Projects />
-        <Contact />
-        <Footer isDark={isDark} toggleTheme={toggleTheme} />
+        <Experiences />
+        <Contact isDark={isDark} />
+        <Footer isDark={isDark} toggleTheme={toggleTheme} />{" "}
       </main>
-      <div className="fixed bottom-0 left-0 h-50 w-full bg-gradient-to-t from-background via-background-80 to-transparent pointer-events-none"></div>
+      <GradualBlur
+        target="page"
+        position="bottom"
+        height="6rem"
+        strength={2}
+        divCount={5}
+        curve="bezier"
+        exponential={true}
+        opacity={1}
+      />
     </div>
   );
 }

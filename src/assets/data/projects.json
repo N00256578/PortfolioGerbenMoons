@@ -1,21 +1,55 @@
 [
     {
-        "slug": "todo-list",
-        "title": "Todo List App",
-        "description": "A simple todo application to manage daily tasks",
+        "slug": "tenor-gif-app",
+        "title": "Tenor GIF App",
+        "description": "A GIF viewer application using the Tenor API to search and display GIFs",
         "screenshots": [
+            {
+                "url": "https://picsum.photos/seed/todoapp/600/400",
+                "caption": "Screenshot of ToDo App"
+            },
+            {
+                "url": "https://picsum.photos/seed/todoapp/600/400",
+                "caption": "Screenshot of ToDo App"
+            },
             {
                 "url": "https://picsum.photos/seed/todoapp/600/400",
                 "caption": "Screenshot of ToDo App"
             }
         ],
-        "url": "https://example.com",
-        "github": "",
-        "date": "2025",
-        "tags": [
+        "url": "",
+        "github": "https://github.com/N00256578/Tenor-GIF-App",
+        "skills": [
             "React",
             "HTML",
             "JavaScript",
+            "CSS"
+        ]
+    },
+    {
+        "slug": "todo-list-2",
+        "title": "To Do List App",
+        "description": "A simple todo application to manage daily tasks",
+        "screenshots": [
+            {
+                "url": "https://picsum.photos/seed/todoapp/600/400",
+                "caption": "Screenshot of ToDo App"
+            },
+            {
+                "url": "https://picsum.photos/seed/todoapp/600/400",
+                "caption": "Screenshot of ToDo App"
+            },
+            {
+                "url": "https://picsum.photos/seed/todoapp/600/400",
+                "caption": "Screenshot of ToDo App"
+            }
+        ],
+        "url": "",
+        "github": "",
+        "skills": [
+            "Test",
+            "hella",
+            "Hallo",
             "CSS"
         ]
     }
