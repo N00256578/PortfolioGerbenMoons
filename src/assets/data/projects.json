@@ -1,55 +1,87 @@
 [
     {
+        "slug": "countries-app",
+        "title": "Countries App",
+        "description": "A Web Application using the REST Countries API to search and display Countries and calculate the currency exchange rates",
+        "screenshots": [
+            {
+                "url": "/images/countries/countries-app-1.png",
+                "caption": "Screenshot of Countries App Frontpage"
+            },
+            {
+                "url": "/images/countries/countries-app-2.png",
+                "caption": "Screenshot of All Countries Page "
+            },
+            {
+                "url": "/images/countries/countries-app-3.png",
+                "caption": "Screenshot of Search Results"
+            },
+            {
+                "url": "/images/countries/countries-app-4.png",
+                "caption": "Screenshot of Ireland Page "
+        },
+            {
+                "url": "/images/countries/countries-app-5.png",
+                "caption": "Screenshot of Countries By Region Page"
+            }
+        ],
+        "url": "",
+        "github": "https://github.com/N00256578/REST-Countries-CA",
+        "skills": [
+            "React",
+            "Vite",
+            "HTML",
+            "JavaScript",
+            "Tailwind CSS",
+            "axios"
+        ]
+    },
+    {
         "slug": "tenor-gif-app",
         "title": "Tenor GIF App",
         "description": "A GIF viewer application using the Tenor API to search and display GIFs",
         "screenshots": [
             {
-                "url": "https://picsum.photos/seed/todoapp/600/400",
-                "caption": "Screenshot of ToDo App"
+                "url": "/images/tenor/tenor-1.png",
+                "caption": "Screenshot of Tenor GIF Home page"
             },
             {
-                "url": "https://picsum.photos/seed/todoapp/600/400",
-                "caption": "Screenshot of ToDo App"
+                "url": "/images/tenor/tenor-2.png",
+                "caption": "Screenshot of Tenor GIF Search Results"
             },
             {
-                "url": "https://picsum.photos/seed/todoapp/600/400",
-                "caption": "Screenshot of ToDo App"
+                "url": "/images/tenor/tenor-3.png",
+                "caption": "Screenshot of Random Tenor GIF"
             }
         ],
         "url": "",
         "github": "https://github.com/N00256578/Tenor-GIF-App",
         "skills": [
             "React",
+            "Vite",
             "HTML",
             "JavaScript",
-            "CSS"
+            "CSS",
+            "bootstrap"
         ]
     },
     {
-        "slug": "todo-list-2",
+        "slug": "todo-list",
         "title": "To Do List App",
         "description": "A simple todo application to manage daily tasks",
         "screenshots": [
             {
-                "url": "https://picsum.photos/seed/todoapp/600/400",
-                "caption": "Screenshot of ToDo App"
-            },
-            {
-                "url": "https://picsum.photos/seed/todoapp/600/400",
-                "caption": "Screenshot of ToDo App"
-            },
-            {
-                "url": "https://picsum.photos/seed/todoapp/600/400",
+                "url": "/images/todo/todo-1.png",
                 "caption": "Screenshot of ToDo App"
             }
         ],
         "url": "",
-        "github": "",
+        "github": "https://github.com/N00256578/ToDo-App",
         "skills": [
-            "Test",
-            "hella",
-            "Hallo",
+            "React",
+            "Vite",
+            "HTML",
+            "JavaScript",
             "CSS"
         ]
     }
