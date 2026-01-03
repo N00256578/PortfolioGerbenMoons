@@ -84,5 +84,49 @@
             "JavaScript",
             "CSS"
         ]
+    },
+    {
+        "slug": "medapp",
+        "title": "Medical App",
+        "description": "A medical application to manage patient records",
+        "screenshots": [
+            {
+                "url": "/images/medapp/login.png",
+                "caption": "Screenshot of Medical App - login page"
+            },
+            {
+                "url": "/images/medapp/dashboard.png",
+                "caption": "Screenshot of Medical App - dashboard"
+            },
+            {
+                "url": "/images/medapp/doctors.png",
+                "caption": "Screenshot of Medical App - doctors page"
+            },
+            {
+                "url": "/images/medapp/doctor.png",
+                "caption": "Screenshot of Medical App - doctor details"
+            },
+            {
+                "url": "/images/medapp/patient.png",
+                "caption": "Screenshot of Medical App - patient details"
+            },
+            {
+                "url": "/images/medapp/appointments.png",
+                "caption": "Screenshot of Medical App - appointments page"
+            },
+            {
+                "url": "/images/medapp/loading.png",
+                "caption": "Screenshot of Medical App - loading state"
+            }
+        ],
+        "url": "https://n00256578-ca2.web.app/",
+        "github": "https://github.com/N00256578/CA2-Med-app",
+        "skills": [
+            "React",
+            "Vite",
+            "HTML",
+            "JavaScript",
+            "CSS"
+        ]
     }
 ]

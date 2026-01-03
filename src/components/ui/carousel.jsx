@@ -146,16 +146,15 @@ function CarouselItem({ className, ...props }) {
   );
 }
 
-function CarouselPrevious({
-  className,
-  variant = "outline",
-  size = "icon",
-  ...props
-}) {
+const CarouselPrevious = React.forwardRef(function CarouselPrevious(
+  { className, variant = "outline", size = "icon", hide = false, ...props },
+  ref
+) {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel();
-
+  if (hide) return null;
   return (
     <Button
+      ref={ref}
       data-slot="carousel-previous"
       variant={variant}
       size={size}
@@ -174,18 +173,17 @@ function CarouselPrevious({
       <span className="sr-only">Previous slide</span>
     </Button>
   );
-}
+});
 
-function CarouselNext({
-  className,
-  variant = "outline",
-  size = "icon",
-  ...props
-}) {
+const CarouselNext = React.forwardRef(function CarouselNext(
+  { className, variant = "outline", size = "icon", hide = false, ...props },
+  ref
+) {
   const { orientation, scrollNext, canScrollNext } = useCarousel();
-
+  if (hide) return null;
   return (
     <Button
+      ref={ref}
       data-slot="carousel-next"
       variant={variant}
       size={size}
@@ -204,7 +202,7 @@ function CarouselNext({
       <span className="sr-only">Next slide</span>
     </Button>
   );
-}
+});
 
 export {
   Carousel,

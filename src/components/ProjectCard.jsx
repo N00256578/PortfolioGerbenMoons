@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import {
   Card,
   CardHeader,
@@ -46,6 +46,21 @@ export function ProjectCard({ project }) {
   } = project;
   const screenshot = screenshots[0];
   const [zoomedImage, setZoomedImage] = React.useState(null);
+  const prevBtnRef = useRef(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  // Carousel keyboard navigation altijd actief als dialog open is
+  const carouselApiRef = useRef(null);
+  const handleDialogKeyDown = (event) => {
+    if (!carouselApiRef.current) return;
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      carouselApiRef.current.scrollPrev();
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      carouselApiRef.current.scrollNext();
+    }
+  };
 
   // Handle ESC key to close zoomed image
   React.useEffect(() => {
@@ -58,6 +73,12 @@ export function ProjectCard({ project }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [zoomedImage]);
 
+  useEffect(() => {
+    if (dialogOpen && prevBtnRef.current) {
+      prevBtnRef.current.focus();
+    }
+  }, [dialogOpen]);
+
   return (
     <Card className="flex flex-col h-full overflow-hidden">
       {screenshot?.url && (
@@ -67,6 +88,7 @@ export function ProjectCard({ project }) {
             alt={screenshot.caption || `${title} screenshot`}
             loading="lazy"
             className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+            onClick={() => setZoomedImage(screenshot)}
           />
         </div>
       )}
@@ -92,52 +114,59 @@ export function ProjectCard({ project }) {
           </div>
         )}
       </CardContent>
-      <CardFooter className="mt-auto flex gap-3">
-        {url && (
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-medium underline underline-offset-4 hover:text-primary"
-          >
-            Live Site
-          </a>
-        )}
-        {github && github.trim() !== "" && (
-          <a
-            href={github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-medium underline underline-offset-4 hover:text-primary"
-          >
-            GitHub
-          </a>
-        )}
-
-        <Dialog>
+      <CardFooter className="mt-auto flex flex-col gap-2 items-start relative">
+        <div className="flex flex-col gap-2">
+          {url && (
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium underline underline-offset-4 hover:text-primary"
+            >
+              Live Site
+            </a>
+          )}
+          {github && github.trim() !== "" && (
+            <a
+              href={github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium underline underline-offset-4 hover:text-primary"
+            >
+              GitHub
+            </a>
+          )}
+        </div>
+        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger asChild>
             <Button
               size="sm"
               variant="outline"
-              className="cursor-pointer ml-auto"
+              className="cursor-pointer ml-auto absolute right-0 top-0"
             >
               View More
             </Button>
           </DialogTrigger>{" "}
-          <DialogContent className="max-w-[95vw] sm:max-w-3xl lg:max-w-5xl max-h-[90vh] p-0 overflow-hidden flex flex-col">
+          <DialogContent
+            className="max-w-[95vw] sm:max-w-3xl lg:max-w-5xl max-h-[90vh] p-0 overflow-hidden flex flex-col"
+            onKeyDown={handleDialogKeyDown}
+          >
             <DialogHeader className="px-6 pt-6 flex-shrink-0">
               <DialogTitle>{title}</DialogTitle>
               <DialogDescription>
                 {date && <span className="font-medium mr-2">{date}</span>}
                 {description}
               </DialogDescription>
-            </DialogHeader>{" "}
+            </DialogHeader>
             <div className="px-6 pb-6 overflow-y-auto flex-1">
               {screenshots?.length > 0 ? (
                 <div className="relative">
-                  <Carousel className="w-full" opts={{ loop: true }}>
+                  <Carousel
+                    className="w-full"
+                    opts={{ loop: true }}
+                    setApi={(api) => (carouselApiRef.current = api)}
+                  >
                     <CarouselContent>
-                      {" "}
                       {screenshots.map((shot, idx) => (
                         <CarouselItem key={idx}>
                           <div
@@ -162,8 +191,15 @@ export function ProjectCard({ project }) {
                         </CarouselItem>
                       ))}
                     </CarouselContent>
-                    <CarouselPrevious className="left-2" />
-                    <CarouselNext className="right-2" />
+                    <CarouselPrevious
+                      ref={prevBtnRef}
+                      className="left-2"
+                      hide={screenshots.length <= 1}
+                    />
+                    <CarouselNext
+                      className="right-2"
+                      hide={screenshots.length <= 1}
+                    />
                   </Carousel>
                 </div>
               ) : (
@@ -205,10 +241,10 @@ export function ProjectCard({ project }) {
                   <Button variant="outline">Close</Button>
                 </DialogClose>
               </DialogFooter>
-            </div>{" "}
+            </div>
           </DialogContent>
         </Dialog>
-      </CardFooter>{" "}
+      </CardFooter>
       {/* Zoomed Image Overlay - Outside Card */}
       {zoomedImage && (
         <div
