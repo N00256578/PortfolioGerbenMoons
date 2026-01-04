@@ -24,7 +24,7 @@ export default function App() {
   }, [isDark]);
 
   useEffect(() => {
-    const sections = ["intro", "projects", "contact"];
+    const sections = ["intro", "projects", "experiences","contact"];
     const targets = sections.map((section) => document.getElementById(section));
 
     const observer = new IntersectionObserver(
@@ -52,12 +52,12 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative">
+    <div className="min-h-screen bg-background/70 text-foreground relative">
       <NavBar activeSection={activeSection} />
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <Intro />
         <Projects />
-        {/* <Experiences /> */}
+        <Experiences />
         <Contact isDark={isDark} />
         <Footer isDark={isDark} toggleTheme={toggleTheme} />
       </main>

@@ -1,7 +1,13 @@
+import { useState } from "react";
 import ProfileCard from "./animations/ProfileCard/ProfileCard";
 import RotatingText from "./animations/RotatingText";
+import experiencesJSON from "@/assets/data/experiences.json";
 
 export default function Intro() {
+  const [exp] = useState(experiencesJSON);
+
+  const currentExp = [...exp].filter((e) => e.enddate === null);
+
   return (
     <header id="intro" className="min-h-screen flex items-center">
       <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
@@ -11,30 +17,23 @@ export default function Intro() {
               CURRENTLY
             </div>
             <div className="space-y-2">
-              <div className="text-foreground">
-                Student{" "}
-                <a
-                  href="http://hogent.be"
-                  target="_blank"
-                  className="text-muted-foreground"
-                >
-                  @ HoGent
-                </a>
-                <div className="text-xs text-muted-foreground">2022 — 2026</div>
-              </div>
-              <div className="text-foreground">
-                Erasmus{" "}
-                <a
-                  href="http://iadt.ie"
-                  target="_blank"
-                  className="text-muted-foreground"
-                >
-                  @ IADT
-                </a>
-                <div className="text-xs text-muted-foreground">
-                  September — December 2025
-                </div>
-              </div>
+              {currentExp.map((exp) => {
+                return (
+                  <div key={exp.slug} className="text-foreground">
+                    {exp.title + " "}
+                    <a
+                      href={exp.url}
+                      target="_blank"
+                      className="text-muted-foreground"
+                    >
+                      @ {exp.company}
+                    </a>
+                    <div className="text-xs text-muted-foreground">
+                      Start date : {new Date(exp.startdate).toLocaleDateString(undefined, { year: "numeric", month: "long" })}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
