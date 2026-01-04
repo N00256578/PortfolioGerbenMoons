@@ -28,12 +28,6 @@ import {
 } from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
 
-// Contract:
-// props.project: {
-//   slug, title, description, screenshots[{url,caption}], url, github, date, tags[]
-// }
-// Renders a card with screenshot, title, description, tags, and action links.
-
 export function ProjectCard({ project }) {
   const {
     title,
@@ -45,12 +39,21 @@ export function ProjectCard({ project }) {
     date,
   } = project;
   const screenshot = screenshots[0];
-  const [zoomedImage, setZoomedImage] = React.useState(null);
-  const prevBtnRef = useRef(null);
+  const [zoomedIndex, setZoomedIndex] = useState(null);
   const [dialogOpen, setDialogOpen] = useState(false);
-
-  // Carousel keyboard navigation altijd actief als dialog open is
+  const prevBtnRef = useRef(null);
   const carouselApiRef = useRef(null);
+
+  const openZoomedImage = (img) => {
+    const idx = screenshots.findIndex((s) => s.url === img.url);
+    setZoomedIndex(idx !== -1 ? idx : 0);
+  };
+  const closeZoomedImage = () => setZoomedIndex(null);
+  const zoomedImage =
+    zoomedIndex !== null && screenshots[zoomedIndex]
+      ? screenshots[zoomedIndex]
+      : null;
+
   const handleDialogKeyDown = (event) => {
     if (!carouselApiRef.current) return;
     if (event.key === "ArrowLeft") {
@@ -62,16 +65,25 @@ export function ProjectCard({ project }) {
     }
   };
 
-  // Handle ESC key to close zoomed image
-  React.useEffect(() => {
+  useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === "Escape" && zoomedImage) {
-        setZoomedImage(null);
+      if (zoomedImage) {
+        if (e.key === "Escape") {
+          closeZoomedImage();
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          setZoomedIndex((idx) => (idx > 0 ? idx - 1 : screenshots.length - 1));
+        } else if (e.key === "ArrowRight") {
+          e.preventDefault();
+          setZoomedIndex((idx) => (idx < screenshots.length - 1 ? idx + 1 : 0));
+        }
+      } else if (dialogOpen && e.key === "Escape") {
+        setDialogOpen(false);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [zoomedImage]);
+  }, [zoomedImage, dialogOpen, screenshots.length]);
 
   useEffect(() => {
     if (dialogOpen && prevBtnRef.current) {
@@ -88,7 +100,7 @@ export function ProjectCard({ project }) {
             alt={screenshot.caption || `${title} screenshot`}
             loading="lazy"
             className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-            onClick={() => setZoomedImage(screenshot)}
+            onClick={() => openZoomedImage(screenshot)}
           />
         </div>
       )}
@@ -171,7 +183,7 @@ export function ProjectCard({ project }) {
                         <CarouselItem key={idx}>
                           <div
                             className="w-full h-48 sm:h-64 md:h-80 overflow-hidden rounded-md bg-muted flex items-center justify-center cursor-zoom-in"
-                            onClick={() => setZoomedImage(shot)}
+                            onClick={() => openZoomedImage(shot)}
                           >
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
@@ -245,29 +257,52 @@ export function ProjectCard({ project }) {
           </DialogContent>
         </Dialog>
       </CardFooter>
-      {/* Zoomed Image Overlay - Outside Card */}
+      {/* Zoomed Image Overlay - Vereenvoudigd */}
       {zoomedImage && (
         <div
           className="fixed inset-0 z-[10000] bg-black/95 flex items-center justify-center p-4"
           onClick={(e) => {
-            // Only close if clicking the background, not the image container
-            if (e.target === e.currentTarget) {
-              setZoomedImage(null);
-            }
+            if (e.target === e.currentTarget) closeZoomedImage();
           }}
         >
           <div className="relative flex flex-col items-center">
-            <button
-              onClick={() => setZoomedImage(null)}
-              className="mb-2 text-white hover:text-gray-300 text-sm font-medium bg-black/50 px-4 py-2 rounded"
-            >
-              Click here or press ESC to close
-            </button>
+            <div className="flex gap-4 mb-2">
+              <button
+                onClick={() =>
+                  setZoomedIndex((idx) =>
+                    idx > 0 ? idx - 1 : screenshots.length - 1
+                  )
+                }
+                className="text-white bg-black/50 px-3 py-2 rounded hover:bg-black/70"
+                aria-label="Vorige afbeelding"
+                disabled={screenshots.length <= 1}
+              >
+                ◀
+              </button>
+              <button
+                onClick={closeZoomedImage}
+                className="text-white hover:text-gray-300 text-sm font-medium bg-black/50 px-4 py-2 rounded"
+              >
+                Sluit (ESC)
+              </button>
+              <button
+                onClick={() =>
+                  setZoomedIndex((idx) =>
+                    idx < screenshots.length - 1 ? idx + 1 : 0
+                  )
+                }
+                className="text-white bg-black/50 px-3 py-2 rounded hover:bg-black/70"
+                aria-label="Volgende afbeelding"
+                disabled={screenshots.length <= 1}
+              >
+                ▶
+              </button>
+            </div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={zoomedImage.url}
               alt={zoomedImage.caption || "Zoomed screenshot"}
-              className="max-w-[90vw] max-h-[80vh] object-contain rounded-lg cursor-default"
+              className="max-w-[90vw] max-h-[80vh] object-contain rounded-lg cursor-default "
             />
             {zoomedImage.caption && (
               <p className="mt-2 text-center text-white text-sm bg-black/50 px-4 py-2 rounded">

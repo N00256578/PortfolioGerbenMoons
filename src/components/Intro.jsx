@@ -1,6 +1,3 @@
-import TextType from "@/components/animations/TextType";
-import DecryptedText from "./animations/DecryptedText";
-
 import ProfileCard from "./animations/ProfileCard/ProfileCard";
 import RotatingText from "./animations/RotatingText";
 
@@ -42,12 +39,20 @@ export default function Intro() {
           </div>
 
           <div className="space-y-4">
-            <div className="text-sm text-muted-foreground font-mono">FOCUS</div>
-            <div className="flex flex-wrap gap-2">
+            {/* <div className="text-sm text-muted-foreground font-mono">FOCUS</div> */}
+            <div className="flex flex-wrap gap-2 items-center">
+              Using
               <RotatingText
-                texts={["HTML", "CSS", "JavaScript", "React", "Tailwind CSS"]}
-                mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
-                // mainClassName="px-2 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
+                texts={[
+                  "JavaScript",
+                  "Typescript",
+                  "React",
+                  "Tailwind CSS",
+                  "MySQL",
+                  "Python",
+                  "Java",
+                ]}
+                mainClassName="px-2 sm:px-2 md:px-3 text-muted-foreground overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
                 staggerFrom={"last"}
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
@@ -57,13 +62,6 @@ export default function Intro() {
                 transition={{ type: "spring", damping: 30, stiffness: 400 }}
                 rotationInterval={3000}
               />
-
-              {/* <span
-                key={skill}
-                className="px-3 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
-              >
-                {skill}
-              </span> */}
             </div>
           </div>
         </div>

@@ -19,7 +19,7 @@
             {
                 "url": "/images/countries/countries-app-4.png",
                 "caption": "Screenshot of Ireland Page "
-        },
+            },
             {
                 "url": "/images/countries/countries-app-5.png",
                 "caption": "Screenshot of Countries By Region Page"
@@ -126,7 +126,8 @@
             "Vite",
             "HTML",
             "JavaScript",
-            "CSS"
+            "Tailwind CSS",
+            "axios"
         ]
     }
 ]
