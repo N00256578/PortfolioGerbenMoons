@@ -1,4 +1,4 @@
-import NavBar from "./components/Navbar";
+import NavBar from "./components/NavBar";
 import Intro from "./components/Intro";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
@@ -24,7 +24,7 @@ export default function App() {
   }, [isDark]);
 
   useEffect(() => {
-    const sections = ["intro", "projects", "experiences","contact"];
+    const sections = ["intro", "projects", "experiences", "contact"];
     const targets = sections.map((section) => document.getElementById(section));
 
     const observer = new IntersectionObserver(
