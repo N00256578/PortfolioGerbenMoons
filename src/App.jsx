@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import GradualBlur from "./components/animations/GradualBlur";
 import Experiences from "./components/Experiences";
 
+import { PrimeReactProvider } from 'primereact/api';
+
 export default function App() {
   const [activeSection, setActiveSection] = useState("");
 

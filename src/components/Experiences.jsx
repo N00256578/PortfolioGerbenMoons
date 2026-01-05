@@ -1,8 +1,13 @@
 import { useState } from "react";
 import experiencesJSON from "@/assets/data/experiences.json";
+import { Timeline } from "primereact/timeline";
+import { ExperienceCard } from "./ExperienceCard";
+import { BsBookmark  } from "react-icons/bs";
+import useIsMobile from "@/lib/useIsMobile";
 
 export default function Experiences() {
   const [experiences] = useState(experiencesJSON);
+  const isMobile = useIsMobile();
 
   const sortedExperiences = [...experiences].sort((a, b) => {
     // Lopende ervaringen (zonder enddate) komen eerst
@@ -17,34 +22,34 @@ export default function Experiences() {
   });
 
   return (
-    <section id="experiences" className="py-20 sm:py-32">
+    <section id="experiences" className="py-5">
       <div className="space-y-12">
         <div className="space-y-4">
           <h2 className="text-3xl sm:text-4xl font-light">Experiences</h2>
           <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-            A selection of experiences, developing my skills and knowledge in IT.
+            A selection of experiences, developing my skills and knowledge in
+            IT.
           </p>
         </div>
 
         <div>
-          {experiences.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {sortedExperiences.map((p) => (
-                // <ProjectCard key={p.slug} project={p} />
-                <>
-                  <h3 className="text-xl font-semibold">{p.title}</h3>
-                  <p className="text-muted-foreground">{p.startdate}</p>
-                  <p className="text-muted-foreground">{p.enddate ? p.enddate : "Ongoing"}</p>
-                </>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-lg text-muted-foreground">
-                No experiences found with the selected skills.
-              </p>
-            </div>
-          )}
+          {
+            <Timeline
+              value={sortedExperiences}
+              content={(item, index) => (
+                <ExperienceCard
+                  experience={item}
+                  position={index % 2 !== 0 ? "left" : "right"}
+                />
+              )}
+              align={isMobile ? "left" : "alternate"}
+              marker={
+                <BsBookmark
+                  className={`w-7 h-9 rounded-full block bg-muted-background text-muted-foreground/90`}
+                />
+              }
+            />
+          }
         </div>
       </div>
     </section>

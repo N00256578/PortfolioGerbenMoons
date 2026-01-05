@@ -1,14 +1,11 @@
 export default function Footer({ isDark, toggleTheme }) {
   return (
     <footer className="py-12 sm:py-16 border-t border-border mb-8">
-      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 sm:gap-8">
-        <div className="space-y-2">
+        <div className="space-y-2 flex flex-row justify-between items-center">
           <div className="text-sm text-muted-foreground">
             © 2025 Gerben Moons
           </div>
-        </div>
 
-        <div className="flex items-center gap-4">
           <button
             onClick={toggleTheme}
             className="group p-3 rounded-lg border border-border hover:border-muted-foreground/50 transition-all duration-300"
@@ -37,7 +34,6 @@ export default function Footer({ isDark, toggleTheme }) {
             )}
           </button>
         </div>
-      </div>
     </footer>
   );
 }

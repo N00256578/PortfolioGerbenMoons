@@ -3,10 +3,10 @@
         "slug": "StudentHoGent",
         "title": "Student",
         "company": "HoGent",
-        "description": "I've been studying at HoGent through virtual campus from 2022",
+        "description": "Pursuing a Bachelor's degree in Applied Computer Science at HoGent, focusing on modern web development, databases, and programming languages since 2022.",
         "startdate": "2022-09-19",
         "enddate": null,
-        "url": "https://www.hogent.be",
+        "url": "https://www.hogent.be/opleidingen/bachelors/toegepaste-informatica/",
         "skills": [
             "Java", "JavaScript", "TypeScript", "MySQL", "HTML", "CSS", "React", "Vite", "NodeJS", "Data Analysis"
         ]
@@ -15,7 +15,7 @@
         "slug": "Erasmus",
         "title": "Erasmus",
         "company": "IADT",
-        "description": "I've had an erasmus experience in IADT, Dublin, Ireland.",
+        "description": "Completed an Erasmus exchange at IADT in Dublin, Ireland, expanding my skills in web development, cloud computing, and game technology in an international environment.",
         "startdate": "2025-09-15",
         "enddate": "2025-12-19",
         "url": "https://www.iadt.ie",
@@ -27,20 +27,10 @@
       "slug": "OLVP",
       "title": "Teacher",
       "company": "OLVP Bornem",
-      "description": "Teaching students Python and general IT-knowledge",
+      "description": "Taught Python programming and general IT knowledge to secondary school students, fostering digital skills and problem-solving abilities.",
       "startdate": "2024-09-01",
       "enddate": "2025-06-30",
       "url": "https://www.olvpbornem.be",
       "skills": ["Python"]
-    },
-    {
-      "slug": "TEST",
-      "title": "TEST",
-      "company": "test",
-      "description": "TEST",
-      "startdate": "2024-09-01",
-      "enddate": null,
-      "url": "",
-      "skills": ["TEST", "test"]
     }
 ]
