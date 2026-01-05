@@ -154,7 +154,7 @@ export function ProjectCard({ project }) {
             <Button
               size="sm"
               variant="outline"
-              className="cursor-pointer ml-auto absolute right-0 top-0"
+              className="cursor-pointer ml-auto absolute right-3 bottom-3"
             >
               View More
             </Button>

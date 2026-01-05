@@ -1,4 +1,4 @@
-import NavBar from "./components/Navbar";
+import NavBar from "./components/NavBar";
 import Intro from "./components/Intro";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
 import GradualBlur from "./components/animations/GradualBlur";
 import Experiences from "./components/Experiences";
+
+import { PrimeReactProvider } from 'primereact/api';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("");
@@ -24,7 +26,7 @@ export default function App() {
   }, [isDark]);
 
   useEffect(() => {
-    const sections = ["intro", "projects", "experiences","contact"];
+    const sections = ["intro", "projects", "experiences", "contact"];
     const targets = sections.map((section) => document.getElementById(section));
 
     const observer = new IntersectionObserver(
