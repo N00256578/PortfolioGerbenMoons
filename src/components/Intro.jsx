@@ -15,10 +15,10 @@ export default function Intro() {
     >
       <div className="w-full lg:w-2/5 flex flex-col justify-end space-y-6 sm:space-y-8 mt-8 lg:mt-0 text-center lg:text-left items-center lg:items-start">
         <div className="space-y-4">
-          <div className="text-sm text-muted-foreground font-mono">
+          <div className="text-2xl text-muted-foreground font-mono">
             CURRENTLY
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2 text-lg">
             {currentExp.map((exp) => {
               return (
                 <div key={exp.slug} className="text-foreground">
@@ -30,7 +30,7 @@ export default function Intro() {
                   >
                     @ {exp.company}
                   </a>
-                  <div className="text-xs text-muted-foreground">
+                  <div className="text-sm text-muted-foreground">
                     Started{" "}
                     {new Date(exp.startdate).toLocaleDateString(undefined, {
                       year: "numeric",
@@ -45,7 +45,7 @@ export default function Intro() {
 
         <div className="space-y-4">
           {/* <div className="text-sm text-muted-foreground font-mono">FOCUS</div> */}
-          <div className="flex flex-wrap gap-2 items-center">
+          <div className="flex flex-wrap gap-2 items-center text-lg">
             Using
             <RotatingText
               texts={[

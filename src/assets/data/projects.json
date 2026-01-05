@@ -2,7 +2,7 @@
     {
         "slug": "countries-app",
         "title": "Countries App",
-        "description": "A Web Application using the REST Countries API to search and display Countries and calculate the currency exchange rates",
+        "description": "This project is a React web app that lets users explore countries and regions, view currency information, and convert currencies with live exchange rates.",
         "screenshots": [
             {
                 "url": "/images/countries/countries-app-1.png",
@@ -33,13 +33,13 @@
             "HTML",
             "JavaScript",
             "Tailwind CSS",
-            "axios"
+            "Axios"
         ]
     },
     {
         "slug": "tenor-gif-app",
         "title": "Tenor GIF App",
-        "description": "A GIF viewer application using the Tenor API to search and display GIFs",
+        "description": "A lightweight web application that lets users search and view GIFs using the Tenor API.",
         "screenshots": [
             {
                 "url": "/images/tenor/tenor-1.png",
@@ -62,13 +62,13 @@
             "HTML",
             "JavaScript",
             "CSS",
-            "bootstrap"
+            "Fetch API"
         ]
     },
     {
         "slug": "todo-list",
         "title": "To Do List App",
-        "description": "A simple todo application to manage daily tasks",
+        "description": "“A simple React application designed to help users efficiently manage and track their daily tasks.",
         "screenshots": [
             {
                 "url": "/images/todo/todo-1.png",
@@ -88,7 +88,7 @@
     {
         "slug": "medapp",
         "title": "Medical App",
-        "description": "A medical application to manage patient records",
+        "description": "A React-based medical management app that enables efficient handling of patients, doctors, appointments, diagnoses, and prescriptions with user-friendly forms and interactive tables.",
         "screenshots": [
             {
                 "url": "/images/medapp/login.png",
@@ -127,7 +127,7 @@
             "HTML",
             "JavaScript",
             "Tailwind CSS",
-            "axios"
+            "Axios"
         ]
     }
 ]
